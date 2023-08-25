@@ -8,6 +8,19 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     use: "ts-loader",
     exclude: /node_modules/,
   };
+  const svgLoader = {
+    test: /\.svg$/i,
+    issuer: /\.[jt]sx?$/,
+    use: ["@svgr/webpack"],
+  };
+  const pngLoader = {
+    test: /\.(png|jpe?g|gif)$/i,
+    use: [
+      {
+        loader: "file-loader",
+      },
+    ],
+  };
   const scssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
@@ -26,5 +39,5 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
       "sass-loader",
     ],
   };
-  return [typescriptLoader, scssLoader];
+  return [typescriptLoader, scssLoader, svgLoader, pngLoader];
 }

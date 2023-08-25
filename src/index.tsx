@@ -1,9 +1,11 @@
-import { render } from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import App from "./App";
 import ReactDOM from "react-dom/client";
-import "./styles/index.scss";
-import ThemeProvider from "./theme/ThemeProvider";
+import "app/styles/index.scss";
+import App from "./app/App";
+import { ThemeProvider } from "app/providers/ThemeProviders";
+
+import "shared/config/i18n/i18n";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
