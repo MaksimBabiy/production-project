@@ -1,7 +1,6 @@
 import { classNames } from "shared/lib/classNames";
 import cls from "./NavBar.module.scss";
 import AppLink, { AppLinkTheme } from "shared/ui/AppLink/AppLink";
-import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
 import { useTranslation } from "react-i18next";
 type Props = {
   className?: string;
