@@ -5,7 +5,7 @@ type Props = {};
 
 const LangSwitcher = (props: Props) => {
   const { t, i18n } = useTranslation();
-  const onTranslate = () => {
+  const onTranslate = async () => {
     i18n.changeLanguage(i18n.language === "en" ? "ua" : "en");
   };
   return (

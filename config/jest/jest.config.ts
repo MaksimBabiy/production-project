@@ -31,8 +31,13 @@ const config: Config = {
     "json",
     "node",
   ],
+  modulePaths: ["<rootDir>src"],
   rootDir: "../../",
   testMatch: ["<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)"],
+  setupFilesAfterEnv: ["<rootDir>config/jest/setupTest.ts"],
+  moduleNameMapper: {
+    "\\.(scss)$": "identity-obj-proxy",
+  },
   // transform: {
   //   "node_modules/variables/.+\\.(j|t)sx?$": "ts-jest",
   // },
