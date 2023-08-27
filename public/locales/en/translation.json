@@ -1,5 +1,8 @@
 {
   "Main": "Main",
   "About": "About",
-  "Lang": "Lang"
+  "Lang": "Lang",
+  "Page Not Found": "Page Not Found",
+  "Something wents wrong": "Something wents wrong",
+  "Reload page": "Reload page"
 }
