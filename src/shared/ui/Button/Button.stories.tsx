@@ -53,3 +53,11 @@ export const OutLineDark: Story = {
   },
 };
 OutLineDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const BackgroundTheme: Story = {
+  args: {
+    children: "Text",
+    theme: ThemeButton.BACKGROUND,
+  },
+};
+OutLineDark.decorators = [ThemeDecorator(Theme.DARK)];

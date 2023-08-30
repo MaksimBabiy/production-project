@@ -1,7 +1,10 @@
 import React from "react";
-import Button, { ThemeButton } from "shared/ui/Button/Button";
+import { classNames } from "shared/lib/classNames";
+import Button, { ButtonSize, ThemeButton } from "shared/ui/Button/Button";
+import cls from "./SideBarToggle.module.scss";
 
 type Props = {
+  collapsed: boolean;
   setCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
@@ -10,8 +13,14 @@ const SideBarToggle = (props: Props) => {
     props.setCollapsed((prev) => !prev);
   };
   return (
-    <Button theme={ThemeButton.CLEAR} onClick={onToggle}>
-      Toggle
+    <Button
+      square={true}
+      theme={ThemeButton.BACKGROUND_INVERTED}
+      onClick={onToggle}
+      className={cls.collasedBtn}
+      size={ButtonSize.LARGE}
+    >
+      {props.collapsed ? ">" : "<"}
     </Button>
   );
 };

@@ -5,14 +5,35 @@
   position: relative;
   transition: width 0.2s;
 }
-
-.collapsed {
-  width: var(--sidebar-width-collapsed);
-}
 .switchers {
   position: absolute;
   bottom: 10px;
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+.collapsed {
+  width: var(--sidebar-width-collapsed);
+
+  .switchers {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.sideBarItems {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.sideBarItems.collapsed {
+  padding: 5px;
+
+  a {
+    text-align: center;
+  }
+  svg {
+    fill: var(--primary-color);
+  }
 }
