@@ -3,12 +3,11 @@ import { useTheme } from "./providers/ThemeProviders";
 import { AppRouter } from "./router";
 import { NavBar } from "widgets/NavBar";
 import { SideBar } from "widgets/SideBar";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { PageLoader } from "widgets/PageLoader";
+import { Modal } from "shared/ui/Modal";
 
-type Props = {};
-
-const App = (props: Props) => {
+const App = () => {
   const { theme } = useTheme();
   return (
     <div className={classNames("app", {}, [theme])}>
