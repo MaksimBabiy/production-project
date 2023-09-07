@@ -5,7 +5,6 @@ import { NavBar } from "widgets/NavBar";
 import { SideBar } from "widgets/SideBar";
 import { Suspense, useState } from "react";
 import { PageLoader } from "widgets/PageLoader";
-import { Modal } from "shared/ui/Modal";
 
 const App = () => {
   const { theme } = useTheme();
