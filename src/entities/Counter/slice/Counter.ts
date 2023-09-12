@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { StateSchema } from "app/providers/StoreProvider/config/StateSchema";
 import { CounterSchema } from "../types/counterSchema";
 
 const initialState = { value: 0 } as CounterSchema;

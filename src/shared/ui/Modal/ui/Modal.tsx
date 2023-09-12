@@ -11,16 +11,24 @@ import Portal from "shared/ui/Portal/Portal";
 import { useTheme } from "app/providers/ThemeProviders";
 type Props = {
   children?: ReactNode;
-  isOpen?: boolean;
+  isOpen: boolean;
   onClose?: () => void;
+  lazy?: boolean;
 };
 const ANIMATION_DELAY = 300;
 
 const Modal = (props: Props) => {
-  const { children, isOpen, onClose } = props;
+  const { children, isOpen, onClose, lazy } = props;
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
   const [isClosing, setIsClosing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const { theme } = useTheme();
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
+    }
+  }, [isOpen]);
 
   const onCloseHandler = useCallback(() => {
     if (onClose) {
@@ -57,6 +65,9 @@ const Modal = (props: Props) => {
   const onContentClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
+  if (lazy && !isMounted) {
+    return null;
+  }
   return (
     <Portal>
       <div className={classNames(cls.modal, mods, [])}>
