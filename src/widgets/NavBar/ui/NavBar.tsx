@@ -38,7 +38,9 @@ const NavBar = ({ className }: Props) => {
           </Button>
         )}
       </div>
-      <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+      {isAuthModal && (
+        <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+      )}
     </div>
   );
 };

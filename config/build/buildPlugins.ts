@@ -21,6 +21,7 @@ export function buildPlugins({
       __IS_DEV__: JSON.stringify(isDev),
     }),
   ];
+
   isDev &&
     plugins.push(
       new BundleAnalyzerPlugin({
