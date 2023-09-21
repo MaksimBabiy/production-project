@@ -1,11 +1,12 @@
 import Button, { ThemeButton } from "shared/ui/Button/Button";
 import cls from "./LangSwitcher.module.scss";
 import { useTranslation } from "react-i18next";
+import { memo } from "react";
 type Props = {
   short?: boolean;
 };
 
-const LangSwitcher = (props: Props) => {
+const LangSwitcher = memo((props: Props) => {
   const { t, i18n } = useTranslation();
   const onTranslate = async () => {
     i18n.changeLanguage(i18n.language === "en" ? "ua" : "en");
@@ -19,6 +20,6 @@ const LangSwitcher = (props: Props) => {
       {t(props.short ? "EU" : "Lang")}
     </Button>
   );
-};
+});
 
 export default LangSwitcher;

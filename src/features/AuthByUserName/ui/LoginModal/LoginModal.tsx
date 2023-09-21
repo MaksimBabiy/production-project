@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, memo } from "react";
 import { Modal } from "shared/ui/Modal";
 import { LoginFormAsync } from "../LoginForm/LoginForm.async";
 import DynamicModuleLoader, {
@@ -13,7 +13,7 @@ type Props = {
 const initialReducers: ReducersList = {
   loginForm: loginReducer,
 };
-const LoginModal = ({ isOpen, onClose }: Props) => {
+const LoginModal = memo(({ isOpen, onClose }: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} lazy={true}>
       <Suspense fallback="">
@@ -23,6 +23,6 @@ const LoginModal = ({ isOpen, onClose }: Props) => {
       </Suspense>
     </Modal>
   );
-};
+});
 
 export default LoginModal;

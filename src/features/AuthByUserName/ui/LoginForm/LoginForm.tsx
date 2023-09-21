@@ -12,10 +12,11 @@ import { getLoginUsername } from "features/AuthByUserName/model/selectors/getLog
 import { getLoginPassword } from "features/AuthByUserName/model/selectors/getLoginPassword/getLoginPassword";
 import { getLoginLoading } from "features/AuthByUserName/model/selectors/getLoginLoading/getLoginLoading";
 import { getLoginError } from "features/AuthByUserName/model/selectors/getLoginError/getLoginError";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch";
 
 const LoginForm = memo(() => {
   const { t } = useTranslation();
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const username = useSelector(getLoginUsername);
   const password = useSelector(getLoginPassword);
   const isLoading = useSelector(getLoginLoading);
@@ -33,8 +34,8 @@ const LoginForm = memo(() => {
     },
     [dispatch]
   );
-  const onLoginClick = useCallback(() => {
-    dispatch(loginByUserName({ username, password }));
+  const onLoginClick = useCallback(async () => {
+    const result = await dispatch(loginByUserName({ username, password }));
   }, [dispatch, username, password]);
 
   return (

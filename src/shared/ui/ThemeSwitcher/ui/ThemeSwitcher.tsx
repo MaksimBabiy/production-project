@@ -4,12 +4,13 @@ import { classNames } from "shared/lib/classNames";
 import LightSvg from "shared/assets/icons/theme-light.svg";
 import DarkSvg from "shared/assets/icons/theme-dark.svg";
 import Button, { ThemeButton } from "shared/ui/Button/Button";
+import { memo } from "react";
 
 type Props = {
   classNames?: string;
 };
 
-const ThemeSwitcher = (props: Props) => {
+const ThemeSwitcher = memo((props: Props) => {
   const { theme, toggleTheme } = useTheme();
   return (
     <Button
@@ -20,6 +21,6 @@ const ThemeSwitcher = (props: Props) => {
       {theme === Theme.LIGHT ? <LightSvg /> : <DarkSvg />}
     </Button>
   );
-};
+});
 
 export default ThemeSwitcher;

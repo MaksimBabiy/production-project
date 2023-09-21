@@ -4,6 +4,8 @@ import { counterReducer } from "entities/Counter/slice/Counter";
 import { userReducer } from "entities/User";
 
 import { createReducerManager } from "./reducerManager";
+import { createReduxStore } from "./testStore";
+import { useDispatch } from "react-redux";
 
 const rootReducers: ReducersMapObject<StateSchema> = {
   user: userReducer,
@@ -17,9 +19,7 @@ export const store = configureStore<StateSchema>({
 
 //@ts-ignore
 store.reducerManager = reducerManager;
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch;
 
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
 export type StateSchemaKeys = keyof StateSchema;
