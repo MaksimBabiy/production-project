@@ -5,20 +5,20 @@ import App from "./app/App";
 import { ThemeProvider } from "app/providers/ThemeProviders";
 import "shared/config/i18n/i18n";
 import { ErrorBoundaries } from "app/providers/ErrorBoundaries";
-import { Provider } from "react-redux";
-import { store } from "app/providers/StoreProvider/config/store";
+import { StoreProvider } from "app/providers/StoreProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={store}>
-    <BrowserRouter>
+  <BrowserRouter>
+    <StoreProvider>
       <ErrorBoundaries>
         <ThemeProvider>
           <App />
         </ThemeProvider>
       </ErrorBoundaries>
-    </BrowserRouter>
-  </Provider>
+    </StoreProvider>
+  </BrowserRouter>
+
   // <StoreProvider>
 
   // </StoreProvider>
