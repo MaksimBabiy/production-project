@@ -9,6 +9,7 @@ import { userReducer } from "entities/User";
 import { createReducerManager } from "./reducerManager";
 import { $api } from "shared/api/api";
 import { NavigateOptions, To } from "react-router-dom";
+import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export function createReduxStore(
   initialState?: StateSchema,
@@ -39,9 +40,10 @@ export function createReduxStore(
         },
       }),
   });
+  //@ts-ignore
+  store.reducerManager = reducerManager;
+
   return store;
 }
 
-//@ts-ignore
-store.reducerManager = reducerManager;
 export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
