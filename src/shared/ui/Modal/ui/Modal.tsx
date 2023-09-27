@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import cls from "./Modal.module.scss";
-import { classNames } from "shared/lib/classNames";
+import { Mods, classNames } from "shared/lib/classNames";
 import Portal from "shared/ui/Portal/Portal";
 import { useTheme } from "app/providers/ThemeProviders";
 type Props = {
@@ -58,7 +58,7 @@ const Modal = (props: Props) => {
     };
   }, [isOpen, onKeyDown]);
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClosing,
   };

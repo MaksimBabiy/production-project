@@ -1,4 +1,6 @@
 import {
+  CombinedState,
+  Reducer,
   ReducersMapObject,
   configureStore,
   getDefaultMiddleware,
@@ -9,7 +11,6 @@ import { userReducer } from "entities/User";
 import { createReducerManager } from "./reducerManager";
 import { $api } from "shared/api/api";
 import { NavigateOptions, To } from "react-router-dom";
-import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export function createReduxStore(
   initialState?: StateSchema,
@@ -30,7 +31,8 @@ export function createReduxStore(
   };
 
   const store = configureStore({
-    reducer: reducerManager.reduce,
+    //@ts-ignore
+    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     devTools: __IS_DEV__,
     preloadedState: initialState,
     middleware: (getDefaultMiddleware) =>

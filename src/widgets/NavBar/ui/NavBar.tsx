@@ -26,7 +26,7 @@ const NavBar = ({ className }: Props) => {
     if (userAuthData) setIsAuthModal((prev) => !prev);
   }, [userAuthData]);
   return (
-    <div className={classNames(cls.navbar)}>
+    <div className={classNames(cls.navbar, {}, [])}>
       <div className={cls.links}>
         {userAuthData ? (
           <Button onClick={onLogout} theme={ThemeButton.CLEAR}>

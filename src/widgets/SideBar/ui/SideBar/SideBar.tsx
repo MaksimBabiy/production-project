@@ -13,7 +13,9 @@ const SideBar = memo((props: Props) => {
   const [collapsed, setCollapsed] = useState(true);
 
   return (
-    <div className={classNames(cls.SideBar, { [cls.collapsed]: collapsed })}>
+    <div
+      className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [])}
+    >
       <SideBarToggle setCollapsed={setCollapsed} collapsed={collapsed} />
       <div
         className={classNames(

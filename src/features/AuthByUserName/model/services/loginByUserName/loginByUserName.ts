@@ -1,5 +1,8 @@
 import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
-import { ThunkExtraArg } from "app/providers/StoreProvider/config/StateSchema";
+import {
+  ThunkConfig,
+  ThunkExtraArg,
+} from "app/providers/StoreProvider/config/StateSchema";
 
 import { User, userActions } from "entities/User";
 import i18n from "shared/config/i18n/i18n";
@@ -12,7 +15,7 @@ interface loginByUserNameProps {
 export const loginByUserName = createAsyncThunk<
   User,
   loginByUserNameProps,
-  { rejectValue: string; extra: ThunkExtraArg }
+  ThunkConfig<string>
 >(
   "login/loginByUserName",
   async ({ username, password }, { dispatch, extra, rejectWithValue }) => {
@@ -24,12 +27,13 @@ export const loginByUserName = createAsyncThunk<
       if (!response.data) {
         throw new Error();
       }
+
       localStorage.setItem(
         USER_LOCALSTORAGE_KEY,
         JSON.stringify(response.data)
       );
       dispatch(userActions.setAuthData(response.data));
-      extra.navigate("/about");
+      extra.navigate?.("/about");
       return response.data;
     } catch (e) {
       return rejectWithValue(

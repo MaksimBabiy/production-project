@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes, FC, memo } from "react";
 import cls from "./Button.module.scss";
-import { classNames } from "shared/lib/classNames";
+import { Mods, classNames } from "shared/lib/classNames";
 
 export enum ThemeButton {
   CLEAR = "clear",
@@ -22,9 +22,16 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: FC<Props> = memo((props) => {
-  const { children, className, size, square, disabled, theme, ...otherProps } =
-    props;
-  const mods: Record<string, boolean> = {
+  const {
+    children,
+    className,
+    size = ButtonSize.MEDIUM,
+    square,
+    disabled,
+    theme = ThemeButton.OUTLINE,
+    ...otherProps
+  } = props;
+  const mods: Mods = {
     [cls.square]: square,
     [cls.disabled]: disabled,
   };

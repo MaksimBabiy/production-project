@@ -13,7 +13,7 @@ type Props = {
 
 const Text = memo(({ title, text, theme }: Props) => {
   return (
-    <div className={classNames("", {}, [cls[theme]])}>
+    <div className={classNames("", {}, [cls[theme as TextTheme]])}>
       {title && <p className={cls.title}>{title}</p>}
       {text && <p className={cls.text}>{text}</p>}
     </div>
