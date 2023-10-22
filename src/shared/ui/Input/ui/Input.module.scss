@@ -10,3 +10,7 @@
 .Input:focus {
   outline: none;
 }
+.readOnly {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

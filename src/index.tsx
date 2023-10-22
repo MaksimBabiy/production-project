@@ -20,8 +20,4 @@ root.render(
       </ErrorBoundaries>
     </StoreProvider>
   </BrowserRouter>
-
-  // <StoreProvider>
-
-  // </StoreProvider>
 );

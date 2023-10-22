@@ -10,5 +10,13 @@
   "Login Form": "Login Form",
   "You entered an incorrect login or password": "You entered an incorrect login or password",
   "Exit": "Exit",
-  "Profile": "Profile"
+  "Profile": "Profile",
+  "Edit": "Edit",
+  "Save": "Save",
+  "Currency": "Currency",
+  "wrong name or last name": "wrong name or last name",
+  "wrong age": "wrong age",
+  "wrong country": "wrong country",
+  "NO_DATA": "",
+  "server error": "server error"
 }

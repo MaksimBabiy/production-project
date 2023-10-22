@@ -5,6 +5,8 @@ import { Mods, classNames } from "shared/lib/classNames";
 export enum ThemeButton {
   CLEAR = "clear",
   OUTLINE = "outline",
+  OUTLINE_RED = "outline_red",
+  OUTLINE_GREEN = "outline_green",
   BACKGROUND = "background",
   BACKGROUND_INVERTED = "backgroundInverted",
 }
@@ -19,6 +21,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ThemeButton;
   size?: ButtonSize;
   disabled?: boolean;
+  isHover?: boolean;
 }
 
 const Button: FC<Props> = memo((props) => {
@@ -28,12 +31,14 @@ const Button: FC<Props> = memo((props) => {
     size = ButtonSize.MEDIUM,
     square,
     disabled,
+    isHover = false,
     theme = ThemeButton.OUTLINE,
     ...otherProps
   } = props;
   const mods: Mods = {
     [cls.square]: square,
     [cls.disabled]: disabled,
+    [cls.hover]: isHover,
   };
   return (
     <button

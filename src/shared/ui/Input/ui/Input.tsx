@@ -4,27 +4,33 @@ import cls from "./Input.module.scss";
 
 type HTMLOInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  "value" | "onChange"
+  "value" | "onChange" | "readOnly"
 >;
 
 interface Props extends HTMLOInputProps {
   className?: string;
-  value?: string;
+  value?: string | number;
   onChange?: (value: string) => void;
+  readonly?: boolean;
 }
 
-const Input = memo(({ value, onChange, className, ...otherProps }: Props) => {
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.target.value);
-  };
-  return (
-    <input
-      className={classNames(cls.Input, {}, [className])}
-      {...otherProps}
-      value={value}
-      onChange={onChangeHandler}
-    />
-  );
-});
+const Input = memo(
+  ({ value, onChange, className, readonly, ...otherProps }: Props) => {
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange?.(e.target.value);
+    };
+    return (
+      <input
+        readOnly={readonly}
+        className={classNames(cls.Input, { [cls.readOnly]: readonly }, [
+          className,
+        ])}
+        {...otherProps}
+        value={value}
+        onChange={onChangeHandler}
+      />
+    );
+  }
+);
 
 export default Input;

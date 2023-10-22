@@ -1,0 +1,13 @@
+.selectWrapper {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.select {
+  margin-left: 10px;
+  background: none;
+  outline: none;
+  color: var(--primary-color);
+  padding: 2px 10px 2px 2px;
+  border: 1px solid var(--primary-color);
+}

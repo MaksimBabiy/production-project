@@ -1,7 +1,29 @@
 {
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
-  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "profile": { "name": "typicode" },
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode",
+    "first": "",
+    "lastname": "",
+    "age": 0,
+    "city": "Odessa",
+    "username": "smthdeath",
+    "avatar": "https://w7.pngwing.com/pngs/862/646/png-transparent-beard-hipster-male-man-avatars-xmas-giveaway-icon-thumbnail.png",
+    "currency": "UAH",
+    "country": "Urkaine"
+  },
   "users": [
     {
       "id": "1",
