@@ -2,7 +2,7 @@
 @import "variables/global";
 @import "themes/light";
 @import "themes/dark";
-
+@import "themes/orange";
 body {
   font: var(--font-m);
   color: var(--primary-color);
@@ -17,5 +17,9 @@ body {
 }
 .page-wrapper {
   flex-grow: 1;
-  padding: 20px;
+  padding: 20px 40px;
+  height: calc(100vh - var(--navbar-hight));
+  overflow-y: auto;
+  width: 100%;
+  flex-shrink: 100;
 }

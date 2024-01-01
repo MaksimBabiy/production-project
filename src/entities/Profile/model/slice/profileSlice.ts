@@ -1,7 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Profile, ProfileSchema, ValidateProfileError } from "../types/profile";
+import { Profile, ProfileSchema } from "../types/profile";
 import { fetchProfileData } from "../services/fetchProfileData/fetchProfileData";
-import { stat } from "fs";
 import { postProfileData } from "../services/postProfileData/postProfileData";
 
 const initialState = {

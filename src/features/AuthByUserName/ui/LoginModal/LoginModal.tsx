@@ -1,7 +1,8 @@
 import { Suspense, memo } from "react";
 import { Modal } from "shared/ui/Modal";
 import { LoginFormAsync } from "../LoginForm/LoginForm.async";
-import DynamicModuleLoader, {
+import {
+  DynamicModuleLoader,
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { loginReducer } from "features/AuthByUserName/model/slice/loginSlice";

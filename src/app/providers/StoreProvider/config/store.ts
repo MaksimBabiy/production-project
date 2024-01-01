@@ -6,11 +6,12 @@ import {
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
 import { StateSchema, ThunkExtraArg } from "./StateSchema";
-import { counterReducer } from "entities/Counter/slice/Counter";
 import { userReducer } from "entities/User";
 import { createReducerManager } from "./reducerManager";
 import { $api } from "shared/api/api";
 import { NavigateOptions, To } from "react-router-dom";
+import { counterReducer } from "entities/Counter";
+import { articleReducer } from "entities/Article";
 
 export function createReduxStore(
   initialState?: StateSchema,
@@ -21,10 +22,10 @@ export function createReduxStore(
     ...asyncReducers,
     user: userReducer,
     counter: counterReducer,
-    // loginForm: loginReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);
+
   const extraArg: ThunkExtraArg = {
     api: $api,
     navigate,
@@ -44,8 +45,10 @@ export function createReduxStore(
   });
   //@ts-ignore
   store.reducerManager = reducerManager;
-
   return store;
 }
-
 export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
+// export type RootState = ReturnType<typeof createReduxStore>["getState"];
+// type DispatchFunc = () => AppDispatch;
+// export const useAppDispatch: DispatchFunc = useDispatch;
+// export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

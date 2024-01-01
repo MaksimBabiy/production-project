@@ -1,7 +1,11 @@
 .button {
   cursor: pointer;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   padding: 7px;
+}
+.hover:hover {
+  background: var(--inverted-bg-color);
+  color: var(--secondary-color);
 }
 
 .clear {
@@ -34,7 +38,7 @@
 }
 .backgroundInverted {
   background: var(--inverted-bg-color);
-  color: var(--primary-color);
+  color: var(--secondary-color);
   border: none;
 }
 .square {
@@ -69,8 +73,4 @@
 .disabled {
   cursor: not-allowed;
   opacity: 0.5;
-}
-
-.hover:hover {
-  background: var(--inverted-bg-color);
 }

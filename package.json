@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start:dev": "concurrently \"npm start\" \"npm run start:dev:server\"",
     "unit": "jest --config ./config/jest/jest.config.ts",
     "start": "webpack serve --env port=3000",
     "start:dev:server": "node ./json-server/index.js",
@@ -75,6 +76,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.5.0",
+    "concurrently": "^8.2.2",
     "i18next": "^23.4.5",
     "i18next-browser-languagedetector": "^7.1.0",
     "i18next-http-backend": "^2.2.1",

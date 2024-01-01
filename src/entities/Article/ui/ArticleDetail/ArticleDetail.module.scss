@@ -1,0 +1,22 @@
+.article {
+  min-height: 100%;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
+.avatarWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.avatar {
+  margin: 0 auto;
+  width: 100%;
+}
+.viewsBlock {
+  display: flex;
+  align-items: center;
+}
+.icon {
+  margin-right: 10px;
+}

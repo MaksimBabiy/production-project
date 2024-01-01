@@ -2,10 +2,10 @@
   padding: 4px 15px;
   border: none;
   border-radius: 5px;
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 .Input::placeholder {
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 .Input:focus {
   outline: none;

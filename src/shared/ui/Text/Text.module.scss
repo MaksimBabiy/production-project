@@ -4,7 +4,7 @@
 }
 .text {
   font: var(--font-m);
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .error {
@@ -24,4 +24,7 @@
 }
 .center {
   text-align: center;
+}
+.justify {
+  text-align: justify;
 }

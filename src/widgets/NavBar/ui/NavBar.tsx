@@ -4,33 +4,34 @@ import Button, { ThemeButton } from "shared/ui/Button/Button";
 import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LoginModal } from "features/AuthByUserName";
-import { useDispatch, useSelector } from "react-redux";
 import { getUserAuthData, userActions } from "entities/User";
-import { AppDispatch } from "app/providers/StoreProvider/config/store";
-
-import { getCounter } from "entities/Counter/selectors/getCounter/getCounter";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch";
+import { useAuth } from "shared/lib/hooks/useAuth";
+import { useSelector } from "react-redux";
+import { StateSchema } from "app/providers/StoreProvider";
 
 type Props = {
   className?: string;
 };
 const NavBar = memo((props: Props) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const [isAuthModal, setIsAuthModal] = useState(false);
-  const userAuthData = useSelector(getUserAuthData);
-  const form = useSelector(getCounter);
-  console.log(userAuthData);
-
-  const onCloseModal = useCallback(() => {
-    setIsAuthModal((prev) => !prev);
-  }, []);
-  const onLogout = useCallback(() => {
-    dispatch(userActions.logout());
-  }, [dispatch]);
+  const userAuthData = useAuth();
+  const data = useSelector((state: StateSchema) => state.user);
+  console.log(data);
 
   useEffect(() => {
     if (userAuthData) setIsAuthModal(() => false);
   }, [userAuthData]);
+
+  const onCloseModal = useCallback(() => {
+    setIsAuthModal((prev) => !prev);
+  }, []);
+
+  const onLogout = useCallback(() => {
+    dispatch(userActions.logout());
+  }, [dispatch]);
 
   if (userAuthData) {
     return (

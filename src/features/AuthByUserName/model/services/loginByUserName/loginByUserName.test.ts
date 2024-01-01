@@ -4,12 +4,19 @@ import { userActions } from "entities/User";
 import { TestAsyncThunk } from "shared/lib/TestAsyncThunk/TestAsyncThunk";
 
 describe("getLoginByUserName.test", () => {
-  const userValue = { username: "123", id: "1", password: "213123" };
+  const userValue = {
+    username: "123",
+    id: "1",
+    password: "213123",
+  };
 
   test("succsess", async () => {
     const thunk = new TestAsyncThunk(loginByUserName);
     thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }));
-    const result = await thunk.callThunk({ username: "123", password: "123" });
+    const result = await thunk.callThunk({
+      username: "123",
+      password: "123",
+    });
 
     expect(thunk.dispatch).toHaveBeenCalledWith(
       userActions.setAuthData(userValue)

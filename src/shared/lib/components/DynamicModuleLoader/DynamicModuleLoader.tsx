@@ -17,7 +17,7 @@ type Props = {
   removeAfterUnmount?: boolean;
 };
 
-const DynamicModuleLoader = ({
+export const DynamicModuleLoader = ({
   children,
   removeAfterUnmount = true,
   reducers,
@@ -39,5 +39,3 @@ const DynamicModuleLoader = ({
   }, []);
   return <>{children}</>;
 };
-
-export default DynamicModuleLoader;

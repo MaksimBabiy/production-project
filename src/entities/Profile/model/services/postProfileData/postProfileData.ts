@@ -9,14 +9,14 @@ import { ValidateProfileData } from "../ValidateProfileData/ValidateProfileData"
 
 export const postProfileData = createAsyncThunk<
   Profile,
-  void,
+  string,
   ThunkConfig<ValidateProfileError[]>
->("profile/postProfileData", async (_, thunkApi) => {
+>("profile/postProfileData", async (id, thunkApi) => {
   const { extra, rejectWithValue, getState } = thunkApi;
 
   try {
     const req = await extra.api.put<Profile>(
-      "/profile",
+      `/profile/${id}`,
       getState().profile?.form
     );
     const errors = ValidateProfileData(getState().profile?.form as Profile);

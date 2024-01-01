@@ -1,7 +1,6 @@
-import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   ThunkConfig,
-  ThunkExtraArg,
 } from "app/providers/StoreProvider/config/StateSchema";
 
 import { User, userActions } from "entities/User";
@@ -27,7 +26,6 @@ export const loginByUserName = createAsyncThunk<
       if (!response.data) {
         throw new Error();
       }
-
       localStorage.setItem(
         USER_LOCALSTORAGE_KEY,
         JSON.stringify(response.data)

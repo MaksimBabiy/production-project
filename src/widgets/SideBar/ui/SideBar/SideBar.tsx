@@ -5,13 +5,16 @@ import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
 import { LangSwitcher } from "shared/ui/LangSwitcher";
 import SideBarToggle from "../SideBarToggle/SideBarToggle";
 
-import { SideBarItemsList } from "widgets/SideBar/model/types/items/SIdeBarItem";
 import SideBarItem from "../SideBarItem/SideBarItem";
+import { RoutePath } from "shared/config/routeConfig/routeConfig";
+import { useSelector } from "react-redux";
+import { getSideBarItems } from "widgets/SideBar/model/selectors/getSideBarItems";
+import { Link } from "react-router-dom";
 type Props = {};
 
 const SideBar = memo((props: Props) => {
   const [collapsed, setCollapsed] = useState(true);
-
+  const SideBarItemsList = useSelector(getSideBarItems);
   return (
     <div
       className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [])}
@@ -24,7 +27,7 @@ const SideBar = memo((props: Props) => {
           []
         )}
       >
-        {SideBarItemsList.map((c, index) => {
+        {SideBarItemsList.map((c) => {
           return <SideBarItem item={c} collapsed={collapsed} key={c.path} />;
         })}
       </div>

@@ -9,7 +9,8 @@ import { getProfileError } from "entities/Profile/model/selectors/getProfileErro
 import { getProfileLoading } from "entities/Profile/model/selectors/getProfileLoading/getProfileLoading";
 import { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
-import DynamicModuleLoader, {
+import {
+  DynamicModuleLoader,
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch";
@@ -21,6 +22,8 @@ import { Country } from "entities/Country";
 import Text, { TextTheme } from "shared/ui/Text/Text";
 import { ValidateProfileError } from "entities/Profile/model/types/profile";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
+import { getUserAuthData } from "entities/User";
 
 type Props = {};
 
@@ -28,7 +31,9 @@ const reducers: ReducersList = {
   profile: profileReducer,
 };
 const ProfilePage = (props: Props) => {
+  const { id } = useParams();
   const { t } = useTranslation();
+  const userData = useSelector(getUserAuthData);
   const form = useSelector(getProfileForm);
   const error = useSelector(getProfileError);
   const Loading = useSelector(getProfileLoading);
@@ -46,7 +51,9 @@ const ProfilePage = (props: Props) => {
   };
 
   useEffect(() => {
-    dispatch(fetchProfileData());
+    if (id) {
+      dispatch(fetchProfileData(id));
+    }
   }, [dispatch]);
   const onChangeFirstName = useCallback(
     (e: string) => {
@@ -97,6 +104,7 @@ const ProfilePage = (props: Props) => {
     },
     [dispatch]
   );
+
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <div>

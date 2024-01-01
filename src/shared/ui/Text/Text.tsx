@@ -6,6 +6,7 @@ export enum TextAlign {
   RIGHT = "right",
   LEFT = "left",
   CENTER = "center",
+  JUSTIFY = "justify",
 }
 
 export enum TextTheme {
@@ -13,24 +14,28 @@ export enum TextTheme {
   ERROR = "error",
 }
 type Props = {
+  classnames?: string;
   title?: string;
-  text?: string;
+  text?: string | number;
   theme?: TextTheme;
   align?: TextAlign;
 };
 
-const Text = memo(({ title, text, theme, align = TextAlign.LEFT }: Props) => {
-  return (
-    <div
-      className={classNames("", {}, [
-        cls[theme as TextTheme],
-        cls[align as TextAlign],
-      ])}
-    >
-      {title && <p className={cls.title}>{title}</p>}
-      {text && <p className={cls.text}>{text}</p>}
-    </div>
-  );
-});
+const Text = memo(
+  ({ title, text, theme, align = TextAlign.LEFT, classnames }: Props) => {
+    return (
+      <div
+        className={classNames("", {}, [
+          cls[theme as TextTheme],
+          cls[align as TextAlign],
+          classnames,
+        ])}
+      >
+        {title && <p className={cls.title}>{title}</p>}
+        {text && <p className={cls.text}>{text}</p>}
+      </div>
+    );
+  }
+);
 
 export default Text;

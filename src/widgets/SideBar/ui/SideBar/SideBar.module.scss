@@ -4,7 +4,9 @@
   background: var(--inverted-bg-color);
   position: relative;
   transition: width 0.2s;
+  z-index: 999999;
 }
+
 .switchers {
   position: absolute;
   bottom: 10px;
@@ -34,6 +36,6 @@
     text-align: center;
   }
   svg {
-    fill: var(--primary-color);
+    fill: var(--secondary-color);
   }
 }

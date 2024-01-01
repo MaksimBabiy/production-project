@@ -1,0 +1,12 @@
+.comment {
+  border: 1px solid var(--primary-color);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.commentInfo {
+  display: flex;
+  align-items: center;
+}
+.commentAvatar {
+  margin-right: 10px;
+}
